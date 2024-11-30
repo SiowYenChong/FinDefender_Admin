@@ -1,0 +1,65 @@
+/* General page styling */
+.container {
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Header styling */
+.title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--text);
+}
+
+/* Table styling */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: var(--bgSoft);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Table headers */
+.table th {
+    background-color: #4CAF50; /* Keep this if you'd like the green background */
+    color: var(--text);
+    text-align: left;
+    padding: 12px 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-bottom: 2px solid var(--bgSoft);
+}
+
+/* Table cells */
+.table td {
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 0.9rem;
+    border-bottom: 1px solid var(--bgSoft);
+    color: var(--text);
+}
+
+/* Table row hover effect */
+.table tr:hover {
+    background-color: #6c717a; /* Color when hovering over the entire row */
+}
+
+/* Link styling for the image column */
+.table td a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.table td a:hover {
+    text-decoration: underline;
+}
+
+/* Styling for empty image column */
+.table td:not(:last-child):empty {
+    font-style: italic;
+    color: var(--textSoft);
+}
