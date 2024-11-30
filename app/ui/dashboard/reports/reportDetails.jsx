@@ -1,12 +1,12 @@
-"use client";
+"use client"; // Mark this component as client-side
 
 import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button"; // Assuming you have a Button component
 import { Badge } from "@/components/ui/badge";
-import { AlertCircle } from "lucide-react";
+import { AlertCircle } from "lucide-react"; // You can use this icon if needed
 import styles from "./reportdetails.module.css"; // Import the CSS file
-import { supabase } from "@/lib/supabase"; // Assuming you have a supabase.js file in lib folder
+import { supabase } from "@/lib/supabaseClient"; // Import supabase client
 
 const ReportDetails = ({ report, onBack }) => {
   const [updatedReport, setUpdatedReport] = useState(report);
@@ -16,15 +16,15 @@ const ReportDetails = ({ report, onBack }) => {
     const fetchReportData = async () => {
       try {
         const { data, error } = await supabase
-          .from('submitted_report')
-          .select('*')
-          .eq('id', report.id)
-          .single(); // Fetch a single report by ID
+          .from("submitted_report")
+          .select("*")
+          .eq("id", report.id) // Fetch a report by ID
+          .single(); // Ensure we get only one report
 
         if (error) {
           console.error("Error fetching report:", error);
         } else {
-          setUpdatedReport(data); // Set the report data from Supabase to state
+          setUpdatedReport(data); // Set the fetched data to state
         }
       } catch (err) {
         console.error("Unexpected error fetching report:", err);
@@ -103,17 +103,32 @@ const ReportDetails = ({ report, onBack }) => {
             {updatedReport?.image_1 || updatedReport?.image_2 || updatedReport?.image_3 ? (
               <div>
                 {updatedReport?.image_1 && (
-                  <a href={updatedReport.image_1} target="_blank" rel="noopener noreferrer" className="text-blue-600">
+                  <a
+                    href={updatedReport.image_1}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.link}
+                  >
                     View Image 1
                   </a>
                 )}
                 {updatedReport?.image_2 && (
-                  <a href={updatedReport.image_2} target="_blank" rel="noopener noreferrer" className="text-blue-600">
+                  <a
+                    href={updatedReport.image_2}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.link}
+                  >
                     View Image 2
                   </a>
                 )}
                 {updatedReport?.image_3 && (
-                  <a href={updatedReport.image_3} target="_blank" rel="noopener noreferrer" className="text-blue-600">
+                  <a
+                    href={updatedReport.image_3}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.link}
+                  >
                     View Image 3
                   </a>
                 )}

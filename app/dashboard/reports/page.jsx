@@ -1,4 +1,4 @@
-import Reports from "@/app/ui/dashboard/reports/reports";
+import Reports from "@/ui/dashboard/reports/reports";
 
 const ReportsPage = () => {
   return <Reports />;
