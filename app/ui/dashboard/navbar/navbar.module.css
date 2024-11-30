@@ -1,5 +1,41 @@
-.container{
+.container {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: var(--bgSoft); /* Corrected to use CSS variable syntax */
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
+  }
+  
+  .title{
+    color: var(--textSoft);
+    font-weight: bold;
+    text-transform: capitalize;
+  }
+
+  .menu {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Adds spacing between the menu items */
+  }
+
+  .search {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adds spacing between the search elements */
+    background-color: #2e374a; /* Sets a dark background color */
+    padding: 10px; /* Adds padding inside the search box */
+    border-radius: 10px; /* Rounds the corners of the search box */
+  }
+
+  .input {
+    background-color: transparent; /* Removes default background for a clean look */
+    border: none; /* Removes default border styling */
+    color: var(--text); /* Applies text color using a CSS variable */
+  }
+
+  .icons {
+    display: flex;
+    gap: 20px;
+  }
+  
