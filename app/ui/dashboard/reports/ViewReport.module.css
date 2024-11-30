@@ -1,0 +1,63 @@
+.container {
+    padding: 20px;
+    background-color: var(--bgSoft); /* Soft background color for container */
+  }
+  
+  .backButton {
+    background-color: #007bff;
+    color: var(--text); /* Primary text color */
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  
+  .backButton:hover {
+    background-color: #0056b3;
+  }
+  
+  .details {
+    background-color: var(--bgSoft); /* Soft background color for the details section */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for the details section */
+  }
+  
+  .details p {
+    margin: 10px 0;
+  }
+
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modalContent {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+  }
+  
+  .modalImage {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .image {
+    max-width: 200px;
+    cursor: pointer;
+    margin: 5px;
+  }
+  
+  

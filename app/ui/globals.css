@@ -1,24 +1,29 @@
+/* Custom CSS variables for theme */
 :root {
-    --bg: #1a1a1a; 
-    --bgSoft: #2c2c2c; 
-    --text: #ffffff; 
-    --textSoft: #b3b3b3; 
+    --bg: #1a1a1a;        /* Background color */
+    --bgSoft: #2c2c2c;     /* Soft background color for cards, sections */
+    --text: #ffffff;       /* Primary text color */
+    --textSoft: #b3b3b3;    /* Secondary text color */
 }
 
-
-*{
-    margin:0;
-    padding:0;
+/* Reset margins, paddings, and box sizing for all elements */
+* {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
-body{
+/* Default styles for body */
+body {
     background-color: var(--bg);
     color: var(--text);
-
+    font-family: 'Inter', sans-serif;  /* Adding a clean font-family (you can change this if desired) */
 }
 
-a{
+/* Style links to inherit text color and remove underlines */
+a {
     color: inherit;
     text-decoration: none;
 }
+
+/* You can add additional utility classes or custom styles here */
