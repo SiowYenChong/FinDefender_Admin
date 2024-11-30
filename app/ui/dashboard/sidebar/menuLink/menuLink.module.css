@@ -1,0 +1,13 @@
+.container {
+    padding: 20px;          /* Add padding inside the container */
+    display: flex;          /* Use flexbox layout */
+    align-items: center;    /* Vertically align items to the center */
+    gap: 10px;              /* Add a 10px gap between items */
+    margin: 5px 0px;
+    border-radius: 10px;
+}
+  
+  .container:hover, .active {
+    background-color: #6c717a; /* Change background color on hover */
+  }
+  
