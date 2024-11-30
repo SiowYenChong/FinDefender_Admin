@@ -1,7 +1,7 @@
 // Add this at the top of your file to mark it as a Client Component
 "use client";
 
-import BubbleMap from "@/app/ui/dashboard/bubbleMap/bubbleMap";
+import BubbleMap from "@/ui/dashboard/bubbleMap/bubbleMap";
 import { useEffect, useState } from "react";
 
 const FraudPage = () => {
