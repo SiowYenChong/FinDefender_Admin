@@ -20,14 +20,16 @@ const ViewReport = ({ report, onBack }) => {
 
   // Function to open the modal with the clicked image
   const handleImageClick = (imageUrl) => {
-    setModalImage(imageUrl);
-    setIsModalOpen(true);
+    console.log("Opening modal with image URL:", imageUrl); // Debug log
+    setModalImage(imageUrl); // Set the clicked image URL to modalImage
+    setIsModalOpen(true); // Open the modal
   };
   
   // Function to close the modal
   const handleModalClose = () => {
-    setIsModalOpen(false);
-    setModalImage("");
+    console.log("Closing modal"); // Debug log
+    setIsModalOpen(false); // Close the modal
+    setModalImage(""); // Reset modal image state
   };
 
   return (
@@ -48,30 +50,30 @@ const ViewReport = ({ report, onBack }) => {
         {report.image_1 && (
           <p><strong>Image 1:</strong> 
             <img 
-              src={extractImageURL(report.image_1)} 
+              src={report.image_1.signedURL || '/path/to/placeholder.jpg'} 
               alt="Image 1" 
               className={styles.image} 
-              onClick={() => handleImageClick(report.image_1)} 
+              onClick={() => handleImageClick(report.image_1.signedURL || '/path/to/placeholder.jpg')} 
             />
           </p>
         )}
         {report.image_2 && (
           <p><strong>Image 2:</strong> 
             <img 
-              src={extractImageURL(report.image_2)} 
+              src={report.image_2.signedURL || '/path/to/placeholder.jpg'} 
               alt="Image 2" 
               className={styles.image} 
-              onClick={() => handleImageClick(report.image_2)} 
+              onClick={() => handleImageClick(report.image_2.signedURL || '/path/to/placeholder.jpg')} 
             />
           </p>
         )}
         {report.image_3 && (
           <p><strong>Image 3:</strong> 
             <img 
-              src={extractImageURL(report.image_3)} 
+              src={report.image_3.signedURL || '/path/to/placeholder.jpg'} 
               alt="Image 3" 
               className={styles.image} 
-              onClick={() => handleImageClick(report.image_3)} 
+              onClick={() => handleImageClick(report.image_3.signedURL || '/path/to/placeholder.jpg')} 
             />
           </p>
         )}

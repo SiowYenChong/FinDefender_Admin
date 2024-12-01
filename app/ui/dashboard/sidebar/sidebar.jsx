@@ -20,7 +20,7 @@ const menuItems = [
         icon: <MdReport />,
       },
       {
-        title: "Bubble Map: Fraud Bank",
+        title: "Analysis Charts",
         path: "/dashboard/fraud-bank",
         icon: <MdBubbleChart />,
       },
