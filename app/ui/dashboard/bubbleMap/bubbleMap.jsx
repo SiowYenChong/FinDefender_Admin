@@ -1,152 +1,97 @@
-"use client"; // Ensures this is rendered on the client side
-
-import { useEffect } from 'react';
-import Highcharts from 'highcharts';
-import HighchartsReact from 'highcharts-react-official';
-import 'highcharts/highcharts-more'; // Import the highcharts-more module
+"use client";
+import { useEffect, useState } from "react";
+import Highcharts from "highcharts";
+import HighchartsReact from "highcharts-react-official";
+import "highcharts/highcharts-more"; // Required for bubble charts
+import supabase from "@/lib/supabaseClient"; // Replace with your Supabase client path
 
 const BubbleMap = () => {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    if (typeof Highcharts === 'object') {
-      // No need to dynamically import highcharts-more anymore
-      console.log('Highcharts-more loaded');
-    }
-  }, []); // Empty dependency array ensures it runs only once when the component is mounted
+    const fetchData = async () => {
+      const { data: reports, error } = await supabase
+        .from("submitted_report")
+        .select("creditor_account_number, debitor_account_number, mode_of_contact");
+
+      if (error) {
+        console.error("Error fetching reports:", error);
+      } else {
+        // Group by creditor-debitor-mode_of_contact and count occurrences
+        const groupedData = reports.reduce((acc, report) => {
+          const key = `${report.creditor_account_number}-${report.debitor_account_number}-${report.mode_of_contact}`;
+          acc[key] = acc[key] ? acc[key] + 1 : 1;
+          return acc;
+        }, {});
+
+        // Transform grouped data into bubble chart format
+        const bubbleData = Object.entries(groupedData).map(([key, count]) => {
+          const [creditor, debitor, mode] = key.split("-");
+          return {
+            x: parseInt(creditor.slice(-4), 10), // Use last digits of creditor as x-axis
+            y: parseInt(debitor.slice(-4), 10), // Use last digits of debitor as y-axis
+            z: count, // Count of reports as bubble size
+            name: `Creditor: ${creditor}, Debitor: ${debitor}, Mode: ${mode}`,
+            mode, // Additional mode info
+          };
+        });
+
+        setData(bubbleData);
+      }
+      setLoading(false);
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return <p>Loading Bubble Map...</p>;
+  }
 
   const options = {
     chart: {
-      type: 'bubble',
+      type: "bubble",
       plotBorderWidth: 1,
       zooming: {
-        type: 'xy',
+        type: "xy",
       },
     },
-
-    legend: {
-      enabled: false,
-    },
-
     title: {
-      text: 'Bubble Map Example',
+      text: "Fraud Cases by Creditor-Debitor Activity and Mode of Contact",
     },
-
-    subtitle: {
-      text: 'Source: <a href="http://www.euromonitor.com/">Euromonitor</a> and <a href="https://data.oecd.org/">OECD</a>',
-    },
-
-    accessibility: {
-      point: {
-        valueDescriptionFormat: '{index}. {point.name}, fat: {point.x}g, ' +
-          'sugar: {point.y}g, obesity: {point.z}%.',
-      },
-    },
-
     xAxis: {
       gridLineWidth: 1,
       title: {
-        text: 'Daily fat intake',
-      },
-      labels: {
-        format: '{value} gr',
-      },
-      plotLines: [{
-        color: 'black',
-        dashStyle: 'dot',
-        width: 2,
-        value: 65,
-        label: {
-          rotation: 0,
-          y: 15,
-          style: {
-            fontStyle: 'italic',
-          },
-          text: 'Safe fat intake 65g/day',
-        },
-        zIndex: 3,
-      }],
-      accessibility: {
-        rangeDescription: 'Range: 60 to 100 grams.',
+        text: "Creditor Account (Last 4 Digits)",
       },
     },
-
     yAxis: {
-      startOnTick: false,
-      endOnTick: false,
+      gridLineWidth: 1,
       title: {
-        text: 'Daily sugar intake',
-      },
-      labels: {
-        format: '{value} gr',
-      },
-      maxPadding: 0.2,
-      plotLines: [{
-        color: 'black',
-        dashStyle: 'dot',
-        width: 2,
-        value: 50,
-        label: {
-          align: 'right',
-          style: {
-            fontStyle: 'italic',
-          },
-          text: 'Safe sugar intake 50g/day',
-          x: -10,
-        },
-        zIndex: 3,
-      }],
-      accessibility: {
-        rangeDescription: 'Range: 0 to 160 grams.',
+        text: "Debitor Account (Last 4 Digits)",
       },
     },
-
     tooltip: {
       useHTML: true,
-      headerFormat: '<table>',
-      pointFormat: '<tr><th colspan="2"><h3>{point.country}</h3></th></tr>' +
-        '<tr><th>Fat intake:</th><td>{point.x}g</td></tr>' +
-        '<tr><th>Sugar intake:</th><td>{point.y}g</td></tr>' +
-        '<tr><th>Obesity (adults):</th><td>{point.z}%</td></tr>',
-      footerFormat: '</table>',
-      followPointer: true,
+      headerFormat: "<table>",
+      pointFormat:
+        "<tr><th colspan='2'><h3>{point.name}</h3></th></tr>" +
+        "<tr><th>Reports:</th><td>{point.z}</td></tr>" +
+        "<tr><th>Mode:</th><td>{point.mode}</td></tr>",
+      footerFormat: "</table>",
     },
-
-    plotOptions: {
-      series: {
-        dataLabels: {
-          enabled: true,
-          format: '{point.name}',
-        },
+    series: [
+      {
+        data,
+        colorByPoint: true,
       },
-    },
-
-    series: [{
-      data: [
-        { x: 95, y: 95, z: 13.8, name: 'BE', country: 'Belgium' },
-        { x: 86.5, y: 102.9, z: 14.7, name: 'DE', country: 'Germany' },
-        { x: 80.8, y: 91.5, z: 15.8, name: 'FI', country: 'Finland' },
-        { x: 80.4, y: 102.5, z: 12, name: 'NL', country: 'Netherlands' },
-        { x: 80.3, y: 86.1, z: 11.8, name: 'SE', country: 'Sweden' },
-        { x: 78.4, y: 70.1, z: 16.6, name: 'ES', country: 'Spain' },
-        { x: 74.2, y: 68.5, z: 14.5, name: 'FR', country: 'France' },
-        { x: 73.5, y: 83.1, z: 10, name: 'NO', country: 'Norway' },
-        { x: 71, y: 93.2, z: 24.7, name: 'UK', country: 'United Kingdom' },
-        { x: 69.2, y: 57.6, z: 10.4, name: 'IT', country: 'Italy' },
-        { x: 68.6, y: 20, z: 16, name: 'RU', country: 'Russia' },
-        { x: 65.5, y: 126.4, z: 35.3, name: 'US', country: 'United States' },
-        { x: 65.4, y: 50.8, z: 28.5, name: 'HU', country: 'Hungary' },
-        { x: 63.4, y: 51.8, z: 15.4, name: 'PT', country: 'Portugal' },
-        { x: 64, y: 82.9, z: 31.3, name: 'NZ', country: 'New Zealand' },
-      ],
-      colorByPoint: true,
-    }]
+    ],
   };
 
   return (
     <figure className="figure w-100">
-      <HighchartsReact
-        highcharts={Highcharts}
-        options={options}
-      />
+      <HighchartsReact highcharts={Highcharts} options={options} />
       <style jsx>{`
         figure {
           margin-top: 3em;

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@next/eslint-plugin-next": "14.0.1",
+    "@shadcn/ui": "^0.0.4",
     "@supabase/supabase-js": "^2.46.2",
     "highcharts": "^12.0.1",
     "highcharts-more": "^0.1.7",
@@ -21,6 +22,7 @@
     "react-icons": "4.11"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.20",
     "eslint": "8",
     "eslint-config-next": "14.0.1"
   }

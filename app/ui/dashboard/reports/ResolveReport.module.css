@@ -1,0 +1,85 @@
+.container {
+    padding: 20px;
+    background-color: var(--bgSoft); /* Soft background color */
+  }
+  
+  .backButton {
+    background-color: #007bff;
+    color: var(--text); /* Use primary text color */
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  
+  .backButton:hover {
+    background-color: #0056b3;
+  }
+  
+  .details {
+    background-color: --bgSoft;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .details p {
+    margin: 10px 0;
+  }
+  
+  .resolveButton {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .resolveButton:hover {
+    background-color: #218838;
+  }
+/* ResolveReport.module.css */
+
+/* Style for the image */
+.image {
+    max-width: 100px;
+    max-height: 100px;
+    margin: 5px;
+    cursor: pointer; /* Makes the image look clickable */
+  }
+  
+  /* Modal overlay */
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  /* Modal content */
+  .modalContent {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+  }
+  
+  /* Larger image in the modal */
+  .modalImage {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  /* Optional: Close the modal when clicking anywhere outside the image */
+  .modal:hover {
+    cursor: pointer;
+  }
+  
+  

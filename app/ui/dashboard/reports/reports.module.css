@@ -3,6 +3,36 @@
     padding: 20px;
     border-radius: 8px;
 }
+/* Filter section styles */
+.filters {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+
+
+/* Each filter item (checkbox or dropdown) */
+.filterItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  /* Label styling for clarity */
+  .filterItem label {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  /* Select and input styling */
+  .filterItem select,
+  .filterItem input {
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
 
 /* Header styling */
 .title {
@@ -63,3 +93,4 @@
     font-style: italic;
     color: var(--textSoft);
 }
+
