@@ -1,4 +1,4 @@
-# **Admin Portal - Smart Fraud Detection**
+# **FindDefender Admin Portal**
 
 This is the **Admin Portal** for the Smart Fraud Detection System. It allows admins to manage user-submitted reports, view fraud analysis results, and take appropriate actions based on the fraud percentages.
 
@@ -47,4 +47,4 @@ Click above to watch a demo showcasing the **Admin Portal** in action.
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-username/admin-portal-smart-fraud.git
+   git clone https://github.com/SiowYenChong/FinDefender_Admin.git
