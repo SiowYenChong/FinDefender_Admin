@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# **Admin Portal - Smart Fraud Detection**
 
-## Getting Started
+This is the **Admin Portal** for the Smart Fraud Detection System. It allows admins to manage user-submitted reports, view fraud analysis results, and take appropriate actions based on the fraud percentages.
 
-First, run the development server:
+## **Table of Contents**
+- [Project Description](#project-description)
+- [Tech Stack](#tech-stack)
+- [Features](#features)
+- [Video Demo](#video-demo)
+- [Installation Guide](#installation-guide)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## **Project Description**
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+The **Admin Portal** provides a comprehensive view of user-submitted fraud reports, their fraud analysis, and allows admins to take action based on the analysis. Admins can:
+- View and manage user reports.
+- View fraud percentages.
+- Mark reports as resolved or not.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+---
 
-## Learn More
+## **Tech Stack**
+- **Frontend and Backend:** NextJS 
+- **Database:** Supabase
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## **Features**
+- View and manage fraud reports submitted by users.
+- Check fraud percentages and take actions (e.g., mark as fraud).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## **Video Demo**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+[![FinDefender Admin Demo](![report](![dashboard](https://github.com/user-attachments/assets/689e5081-0f50-4aba-9299-7e5596302559)
+)
+)](https://drive.google.com/file/d/10cvWqrr9M1cdbX4QafpZhyU8NXjGO5Bu/view?usp=drive_link)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+Click above to watch a demo showcasing the **Admin Portal** in action.
+
+---
+
+## **Installation Guide**
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/your-username/admin-portal-smart-fraud.git
