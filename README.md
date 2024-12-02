@@ -1,4 +1,4 @@
-# **FindDefender Admin Portal**
+# **FinDefender Admin Portal**
 
 This is the **Admin Portal** for the Smart Fraud Detection System. It allows admins to manage user-submitted reports, view fraud analysis results, and take appropriate actions based on the fraud percentages.
 
